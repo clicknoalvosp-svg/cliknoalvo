@@ -255,7 +255,16 @@ fbq('track', 'PageView');
   }
 </style>
 </head>
-<body>
+<body><!-- TOP ANNOUNCEMENT BAR -->
+<div id="topbar" style="background:#ff4d00;padding:9px 20px;text-align:center;position:relative;z-index:200;">
+  <p style="font-size:.82rem;font-family:'Barlow',sans-serif;font-weight:600;color:#fff;letter-spacing:.3px;line-height:1.4;">
+    🏭 <strong>Não é dono de serralheria?</strong> Sem problema — a estratégia funciona para qualquer empresário.
+    <a href="#formulario" style="color:#fff;text-decoration:underline;font-weight:700;margin-left:6px;">Preencha o formulário assim mesmo →</a>
+  </p>
+  <button onclick="document.getElementById('topbar').style.display='none'" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,.7);font-size:1rem;cursor:pointer;line-height:1;">✕</button>
+</div>
+
+
 
 <nav>
   <div class="logo">
@@ -487,6 +496,7 @@ fbq('track', 'PageView');
   <a href="#formulario" class="btn-primary">🎯 QUERO MEU DIAGNÓSTICO GRATUITO</a>
 </section>
 
+
 <!-- FORMULÁRIO -->
 <section class="form-section" id="formulario">
   <div class="form-wrap">
@@ -519,9 +529,25 @@ fbq('track', 'PageView');
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label for="empresa">Nome da Serralheria <span>*</span></label>
+            <label for="empresa">Nome da Empresa <span>*</span></label>
             <input type="text" id="empresa" name="empresa" placeholder="Nome da sua empresa"/>
           </div>
+          <div class="form-group">
+            <label for="ramo">Ramo de Atuação <span>*</span></label>
+            <select id="ramo" name="ramo">
+              <option value="" disabled selected>Qual é o seu segmento?</option>
+              <option value="serralheria">Serralheria / Metalúrgica</option>
+              <option value="construcao">Construção Civil / Reforma</option>
+              <option value="comercio">Comércio / Varejo</option>
+              <option value="servicos">Prestação de Serviços</option>
+              <option value="industria">Indústria / Fabricação</option>
+              <option value="alimentacao">Alimentação / Restaurante</option>
+              <option value="saude">Saúde / Estética / Bem-estar</option>
+              <option value="outro">Outro segmento</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
           <div class="form-group">
             <label for="faturamento">Faturamento Mensal Atual <span>*</span></label>
             <select id="faturamento" name="faturamento">
@@ -558,11 +584,11 @@ fbq('track', 'PageView');
         </div>
         <div class="form-group full" style="margin-top:4px;">
           <label for="desafio">Qual é seu maior desafio hoje?</label>
-          <textarea id="desafio" name="desafio" placeholder="Ex: Preciso de mais clientes para grades e portões automáticos, minha equipe está ociosa..."></textarea>
+          <textarea id="desafio" name="desafio" placeholder="Ex: Preciso de mais clientes, minha equipe está ociosa, não tenho previsibilidade de faturamento..."></textarea>
         </div>
         <div class="form-checkbox">
           <input type="checkbox" id="termos" name="termos"/>
-          <label for="termos">Concordo em receber contato da <strong>Clik no Alvo</strong> sobre marketing digital para minha serralheria. Seus dados são protegidos e nunca serão compartilhados. <a href="#">Ver política de privacidade.</a></label>
+          <label for="termos">Concordo em receber contato da <strong>Clik no Alvo</strong> sobre marketing digital para minha empresa. Seus dados são protegidos e nunca serão compartilhados. <a href="#">Ver política de privacidade.</a></label>
         </div>
         <button type="button" class="btn-submit" onclick="handleSubmit()">
           🎯 QUERO MEU DIAGNÓSTICO GRATUITO
@@ -597,14 +623,14 @@ fbq('track', 'PageView');
     </div>
     CLIK NO <span>&nbsp;ALVO</span>
   </div>
-  <p>© 2025 Clik no Alvo · Marketing Digital para Serralherias · clicknoalvosp@gmail.com</p>
+  <p>© 2025 Clik no Alvo · Marketing Digital para Serralherias · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bbd8d7d2d8d0d5d4dad7cdd4c8cbfbdcd6dad2d795d8d4d6">[email&#160;protected]</a></p>
   <p style="color:var(--gray);font-size:.78rem;">Hospedagem: <a href="http://www.serralheriamovel.online" style="color:var(--orange)">serralheriamovel.online</a></p>
 </footer>
 
 <!-- WhatsApp Flutuante -->
 <a href="https://wa.me/5511978910701" target="_blank" class="whatsapp-float" title="Fale com Anderson no WhatsApp">💬</a>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
   emailjs.init('gGuNR35Hnr-4apdKC');
 
@@ -623,6 +649,7 @@ fbq('track', 'PageView');
     var cidade = document.getElementById('cidade').value.trim();
     var empresa = document.getElementById('empresa').value.trim();
     var fat = document.getElementById('faturamento').value;
+    var ramo = document.getElementById('ramo') ? document.getElementById('ramo').value : 'serralheria';
     var termos = document.getElementById('termos').checked;
 
     if (!nome || !whatsapp || !email || !cidade || !empresa || !fat) {
@@ -646,7 +673,7 @@ fbq('track', 'PageView');
       emailjs.send('service_puqzga8', 'template_rnzkhxv', {
         nome: nome, whatsapp: whatsapp, email: email,
         empresa: empresa, cidade: cidade,
-        faturamento: fat, desafio: desafio
+        faturamento: fat, desafio: desafio, ramo: ramo
       });
     } catch(e) { console.log('EmailJS erro:', e); }
 
@@ -659,7 +686,7 @@ fbq('track', 'PageView');
       '🎯 NOVO LEAD - Clik no Alvo\n\n' +
       'Nome: ' + nome + '\nWhatsApp: ' + whatsapp +
       '\nE-mail: ' + email + '\nEmpresa: ' + empresa +
-      '\nCidade: ' + cidade + '\nFaturamento: ' + fat +
+      '\nCidade: ' + cidade + '\nRamo: ' + ramo + '\nFaturamento: ' + fat +
       '\nDesafio: ' + desafio
     );
     setTimeout(function() {
@@ -682,12 +709,4 @@ fbq('track', 'PageView');
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.pain-card, .deliver-card, .guarantee-item').forEach(function(el) {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity .5s ease, transform .5s ease';
-    observer.observe(el);
-  });
-</script>
-</body>
-</html>
+  document.querySelectorAll('.pain-card, .deliver-card, .gua
