@@ -522,54 +522,42 @@ fbq('track', 'PageView');
       return;
     }
 
-    var desafio = document.getElementById('desafio').value;
+    var desafio = document.getElementById('desafio').value || 'Não informado';
 
-    // Enviar email via EmailJS
-    emailjs.send('service_puqzga8', 'template_rnzkhxv', {
-      nome: nome,
-      whatsapp: whatsapp,
-      email: email,
-      empresa: empresa,
-      cidade: cidade,
-      faturamento: fat,
-      desafio: desafio || 'Não informado'
-    }).then(function() {
-      console.log('Email enviado com sucesso!');
-    }, function(error) {
-      console.log('Erro ao enviar email:', error);
-    });
-
-    var msg = encodeURIComponent(
-      '🎯 NOVO LEAD - Clik no Alvo\n\n' +
-      'Nome: ' + nome + '\n' +
-      'WhatsApp: ' + whatsapp + '\n' +
-      'E-mail: ' + email + '\n' +
-      'Empresa: ' + empresa + '\n' +
-      'Cidade: ' + cidade + '\n' +
-      'Faturamento: ' + fat + '\n' +
-      'Desafio: ' + (desafio || 'Não informado')
-    );
-
-    // Pixel Facebook
-    if (typeof fbq !== 'undefined') { fbq('track', 'Lead'); }
-
-    // Google Analytics
-    if (typeof gtag !== 'undefined') { gtag('event', 'generate_lead', { event_category: 'formulario', event_label: empresa }); }
-
-    // Mostrar sucesso
+    // 1. Mostrar sucesso imediatamente
     document.getElementById('leadForm').style.display = 'none';
     document.getElementById('successMsg').style.display = 'block';
     document.getElementById('nomeConfirm').textContent = nome.split(' ')[0];
 
-    // Abrir WhatsApp
+    // 2. Enviar email via EmailJS (não bloqueia o fluxo)
+    try {
+      emailjs.send('service_puqzga8', 'template_rnzkhxv', {
+        nome: nome, whatsapp: whatsapp, email: email,
+        empresa: empresa, cidade: cidade,
+        faturamento: fat, desafio: desafio
+      });
+    } catch(e) { console.log('EmailJS erro:', e); }
+
+    // 3. Pixel e Analytics
+    if (typeof fbq !== 'undefined') { fbq('track', 'Lead'); }
+    if (typeof gtag !== 'undefined') { gtag('event', 'generate_lead', { event_category: 'formulario', event_label: empresa }); }
+
+    // 4. Abrir WhatsApp
+    var msg = encodeURIComponent(
+      '🎯 NOVO LEAD - Clik no Alvo\n\n' +
+      'Nome: ' + nome + '\nWhatsApp: ' + whatsapp +
+      '\nE-mail: ' + email + '\nEmpresa: ' + empresa +
+      '\nCidade: ' + cidade + '\nFaturamento: ' + fat +
+      '\nDesafio: ' + desafio
+    );
     setTimeout(function() {
       window.open('https://wa.me/5511978910701?text=' + msg, '_blank');
-    }, 500);
+    }, 600);
 
-    // Redirecionar para obrigado.html
+    // 5. Redirecionar para obrigado.html
     setTimeout(function() {
       window.location.href = 'obrigado.html?nome=' + encodeURIComponent(nome);
-    }, 800);
+    }, 1200);
   }
 
   // Animações de entrada
