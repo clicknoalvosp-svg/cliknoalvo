@@ -1,636 +1,19 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<!-- ═══ GOOGLE ANALYTICS ═══ -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-76P6KV3LMJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-76P6KV3LMJ');
-
-  // Rastreio de cada etapa do quiz no Google Analytics
-  function track(evento, opcao) {
-    gtag('event', evento, { opcao_escolhida: opcao });
-  }
-</script>
-
-<!-- ═══ META PIXEL ═══
-     PageView: dispara para TODOS os visitantes (aqui no head)
-     Lead: dispara SOMENTE quando o usuário chega à tela de agradecimento (bfinal)
-     — controlado via JavaScript na função avancar(passo)
--->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1644837116658924');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1644837116658924&ev=PageView&noscript=1"
-/></noscript>
-
-<!-- Open Graph -->
-<meta property="og:type" content="website"/>
-<meta property="og:title" content="Você está aqui. Isso não foi por acaso. 🎯"/>
-<meta property="og:description" content="Sem post. Sem story. Mesmo assim você chegou até aqui. Isso é tráfego pago feito certo."/>
-<meta property="og:url" content="https://clicknoalvosp-svg.github.io/prospeccao/"/>
-<meta property="og:image" content="https://clicknoalvosp-svg.github.io/PROSPECTOR-CLICK/preview.jpg"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<title>Click no Alvo · Você está aqui. Isso não foi por acaso.</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
-
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --green:#3dd65c;
-  --green2:#2ab848;
-  --green-dim:rgba(61,214,92,0.12);
-  --green-line:rgba(61,214,92,0.25);
-  --black:#000000;
-  --gray1:#0d0d0d;
-  --gray2:#141414;
-  --gray3:#1c1c1c;
-  --white:#ffffff;
-  --text:#e8e8e8;
-  --muted:#666666;
-  --muted2:#444444;
-}
-html{scroll-behavior:smooth}
-body{
-  font-family:'DM Sans',sans-serif;
-  background:var(--black);
-  color:var(--text);
-  min-height:100vh;
-  overflow-x:hidden;
-}
-body::after{
-  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  opacity:.035;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-.wrap{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:0 1.25rem 6rem}
-
-/* NAV */
-.nav{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:1.8rem 0 1.4rem;
-  border-bottom:1px solid rgba(255,255,255,0.06);
-  animation:fadeD .5s ease both;
-}
-.nav img{height:60px;object-fit:contain}
-.nav-pill{
-  display:flex;align-items:center;gap:.5rem;
-  font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--green);border:1px solid var(--green-line);
-  border-radius:999px;padding:.3rem .9rem;
-  background:var(--green-dim);
-}
-.nav-pill span{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.6s infinite}
-
-/* HERO */
-.hero{padding:4.5rem 0 3rem;animation:fadeD .6s ease .1s both}
-.hero-label{
-  font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:1.6rem;display:flex;align-items:center;gap:.75rem;
-}
-.hero-label::before{content:'';flex:0 0 28px;height:1px;background:var(--muted2)}
-.hero h1{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(3.4rem,13vw,6.5rem);
-  line-height:.95;letter-spacing:.01em;
-  color:var(--white);margin-bottom:1.8rem;
-}
-.hero h1 .accent{color:var(--green)}
-.hero h1 .line2{display:block}
-.hero-sub{
-  font-size:1.1rem;color:var(--muted);line-height:1.75;
-  max-width:520px;margin-bottom:2.5rem;font-weight:300;
-}
-.hero-sub strong{color:var(--text);font-weight:500}
-
-/* STAT ROW */
-.stat-row{
-  display:flex;gap:0;
-  border:1px solid rgba(255,255,255,0.07);
-  border-radius:12px;overflow:hidden;
-}
-.stat-item{
-  flex:1;padding:1.2rem 1rem;text-align:center;
-  border-right:1px solid rgba(255,255,255,0.07);
-}
-.stat-item:last-child{border-right:none}
-.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--green);line-height:1;letter-spacing:.03em}
-.stat-label{font-size:.7rem;color:var(--muted);margin-top:.3rem;line-height:1.4;text-transform:uppercase;letter-spacing:.06em}
-
-/* SECTION LABEL */
-.sec-label{
-  display:flex;align-items:center;gap:.8rem;
-  font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--muted);margin:3.5rem 0 1.6rem;
-}
-.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.07)}
-
-/* MANIFESTO */
-.manifesto{
-  border-left:3px solid var(--green);
-  padding:1.8rem 1.6rem;
-  background:var(--gray1);
-  border-radius:0 12px 12px 0;
-  margin-bottom:2rem;
-}
-.manifesto p{font-size:1.1rem;line-height:1.8;color:var(--text);font-weight:300;}
-.manifesto p strong{color:var(--white);font-weight:600}
-.manifesto p + p{margin-top:1rem}
-
-/* STAT DIGITAL */
-.stat-digital{display:grid;gap:.75rem;margin-bottom:2rem;}
-.sd-card{
-  display:flex;align-items:center;gap:1.2rem;
-  padding:1.1rem 1.3rem;
-  background:var(--gray1);
-  border:1px solid rgba(255,255,255,0.06);
-  border-radius:10px;transition:border-color .2s;
-}
-.sd-card:hover{border-color:var(--green-line)}
-.sd-num{font-size:2rem;min-width:60px;line-height:1;}
-.sd-text{font-size:.88rem;color:var(--muted);line-height:1.55}
-.sd-text strong{color:var(--text);font-weight:500;display:block;margin-bottom:.15rem}
-
-/* SERVIÇOS */
-.services{display:grid;gap:.65rem;margin-bottom:2rem}
-.svc{
-  display:flex;align-items:flex-start;gap:1.2rem;
-  padding:1.3rem 1.4rem;
-  background:var(--gray1);
-  border:1px solid rgba(255,255,255,0.06);
-  border-radius:12px;
-  transition:border-color .2s,background .2s,transform .2s;cursor:default;
-}
-.svc:hover{border-color:var(--green-line);background:var(--gray2);transform:translateX(4px)}
-.svc-num{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--green);min-width:32px;padding-top:.05rem;opacity:.7;}
-.svc-body strong{display:block;color:var(--white);font-weight:600;font-size:.95rem;margin-bottom:.25rem}
-.svc-body span{color:var(--muted);font-size:.82rem;line-height:1.6}
-
-/* RESULTADO */
-.resultado{
-  background:linear-gradient(135deg,rgba(61,214,92,.1) 0%,rgba(61,214,92,.04) 100%);
-  border:1px solid var(--green-line);
-  border-radius:16px;padding:2rem 1.8rem;text-align:center;margin-bottom:2rem;
-}
-.resultado h2{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(2rem,8vw,3.2rem);
-  color:var(--white);line-height:1;letter-spacing:.02em;margin-bottom:.8rem;
-}
-.resultado h2 em{color:var(--green);font-style:normal}
-.resultado p{color:var(--muted);font-size:.95rem;line-height:1.75;max-width:460px;margin:0 auto}
-
-/* QUIZ */
-.quiz-header{margin-bottom:1.5rem}
-.quiz-header h2{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(2rem,8vw,3rem);
-  color:var(--white);letter-spacing:.02em;line-height:1.05;margin-bottom:.6rem;
-}
-.quiz-header h2 em{color:var(--green);font-style:normal}
-.quiz-header p{color:var(--muted);font-size:.9rem;line-height:1.65}
-
-.dots{display:flex;gap:.5rem;margin-bottom:1.5rem}
-.dot{
-  width:7px;height:7px;border-radius:50%;
-  background:rgba(255,255,255,0.1);
-  border:1px solid rgba(255,255,255,0.15);
-  transition:background .3s,transform .3s;
-}
-.dot.active{background:var(--green);transform:scale(1.4);border-color:var(--green)}
-
-.block{display:none;animation:fadeU .35s ease both}
-.block.visible{display:block}
-
-.card{
-  background:var(--gray1);
-  border:1px solid rgba(255,255,255,0.09);
-  border-radius:16px;padding:2rem 1.75rem;
-}
-.q-step{font-size:.68rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.65rem;}
-.card h2{font-family:'Bebas Neue',sans-serif;font-size:1.65rem;color:var(--white);margin-bottom:1.4rem;letter-spacing:.02em;line-height:1.15;}
-
-.opts{display:flex;flex-direction:column;gap:.65rem}
-.opt{
-  display:flex;align-items:center;gap:.9rem;
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:10px;padding:1rem 1.2rem;
-  color:var(--text);font-family:'DM Sans',sans-serif;
-  font-size:.95rem;cursor:pointer;text-align:left;
-  transition:background .18s,border-color .18s,transform .15s;
-}
-.opt:hover{background:rgba(61,214,92,.08);border-color:var(--green-line);transform:translateX(5px)}
-.opt.selected{background:rgba(61,214,92,.13);border-color:var(--green);color:var(--white)}
-.opt-ic{font-size:1.1rem;min-width:26px;text-align:center}
-
-.field-group{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.1rem}
-.field-label{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem}
-.inp{
-  width:100%;background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:10px;padding:.95rem 1.1rem;
-  color:var(--white);font-family:'DM Sans',sans-serif;font-size:1rem;
-  outline:none;transition:border-color .2s;
-}
-.inp::placeholder{color:var(--muted2)}
-.inp:focus{border-color:var(--green)}
-
-.btn-next{
-  width:100%;background:var(--green);color:#000;
-  font-family:'Bebas Neue',sans-serif;font-weight:400;
-  font-size:1.15rem;letter-spacing:.08em;
-  padding:1.05rem;border:none;border-radius:10px;cursor:pointer;
-  transition:opacity .2s,transform .15s;
-}
-.btn-next:hover{opacity:.88;transform:translateY(-2px)}
-
-/* OFERTA FINAL */
-.oferta{
-  position:relative;overflow:hidden;
-  background:var(--gray1);
-  border:1px solid var(--green-line);
-  border-radius:18px;padding:2.4rem 1.9rem;text-align:center;
-}
-.oferta::before{
-  content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);
-  width:280px;height:280px;border-radius:50%;
-  background:radial-gradient(circle,rgba(61,214,92,.14) 0%,transparent 70%);
-  pointer-events:none;
-}
-.oferta-tag{
-  display:inline-block;background:var(--green);color:#000;
-  font-family:'Bebas Neue',sans-serif;letter-spacing:.1em;
-  font-size:.85rem;padding:.35rem 1rem;border-radius:999px;margin-bottom:1.2rem;
-}
-.oferta h2{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(2rem,8vw,3rem);
-  color:var(--white);line-height:1;letter-spacing:.02em;margin-bottom:1rem;
-}
-.oferta h2 em{color:var(--green);font-style:normal}
-.oferta p{color:var(--muted);font-size:.95rem;line-height:1.75;margin-bottom:1.5rem}
-
-.feat-list{display:grid;gap:.55rem;margin-bottom:1.8rem;text-align:left;}
-.feat{
-  display:flex;align-items:flex-start;gap:.75rem;
-  font-size:.85rem;color:var(--text);
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,0.07);
-  border-radius:8px;padding:.7rem 1rem;
-}
-.feat::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:.05rem}
-
-.wpp-btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:.7rem;
-  background:#25d366;color:#000;
-  font-family:'Bebas Neue',sans-serif;letter-spacing:.08em;
-  font-size:1.15rem;padding:1.1rem 2rem;border-radius:12px;
-  text-decoration:none;width:100%;
-  transition:opacity .2s,transform .2s;margin-bottom:.9rem;
-}
-.wpp-btn:hover{opacity:.9;transform:translateY(-2px);color:#000}
-.wpp-obs{font-size:.74rem;color:var(--muted)}
-
-.selos{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:1.4rem;}
-.selo{display:flex;align-items:center;gap:.4rem;font-size:.74rem;color:var(--muted2)}
-.selo em{color:var(--green);font-style:normal}
-
-/* FOOTER */
-.footer{margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.06);text-align:center;}
-.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.2em;color:var(--muted2);margin-bottom:.3rem;}
-.footer-tag{font-size:.72rem;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase}
-
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
-.reveal.in{opacity:1;transform:translateY(0)}
-
-/* ANIMATIONS */
-@keyframes fadeD{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeU{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
-
-@media(max-width:480px){
-  .stat-row{flex-wrap:wrap}
-  .stat-item{min-width:45%}
-  .hero h1{font-size:3.2rem}
-}
-</style>
-</head>
-<body>
-<div class="wrap">
-
-<!-- NAV -->
-<nav class="nav">
-  <!-- ATENÇÃO: substitua o src abaixo pelo base64 original do seu logo -->
-  <img src="SEU_LOGO_AQUI" alt="Click no Alvo" style="height:58px"/>
-  <div class="nav-pill"><span></span>Análise gratuita</div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-label">Agência de tráfego pago · São Paulo</div>
-  <h1>
-    VOCÊ ESTÁ<br/>
-    <span class="accent">AQUI AGORA.</span><br/>
-    <span class="line2">ISSO TEM UM MOTIVO.</span>
-  </h1>
-  <p class="hero-sub">
-    Eu não tenho nenhum post no Instagram. Nenhuma publicação no Facebook.<br/>
-    Mesmo assim você chegou até essa página.<br/>
-    <strong>Isso se chama tráfego pago feito certo. É exatamente o que eu faço pelo seu negócio.</strong>
-  </p>
-  <div class="stat-row">
-    <div class="stat-item">
-      <div class="stat-num">⏰</div>
-      <div class="stat-label">Sabemos o horário exato em que seu cliente pesquisa</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">🖱️</div>
-      <div class="stat-label">Rastreamos cada clique dentro do seu site</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">🛒</div>
-      <div class="stat-label">Descobrimos quando e por que ele comprou</div>
-    </div>
-  </div>
-</section>
-
-<!-- O QUE FAZEMOS DE VERDADE -->
-<div class="sec-label reveal">O que acontece quando a gente abre seu marketing</div>
-
-<div class="manifesto reveal">
-  <p>Quando a gente começa a trabalhar com um negócio, a primeira coisa que fazemos é <strong>observar o comportamento do seu cliente.</strong></p>
-  <p>Que horas ele pesquisa pelo que você vende? Quanto tempo ele fica no seu site? Em qual página ele desistiu de comprar? Por que ele voltou no dia seguinte e comprou?</p>
-  <p><strong>Essas respostas estão dentro do Google Analytics e do Pixel do Facebook.</strong> A gente lê esses dados todos os dias e usa isso para fazer seu anúncio aparecer na hora certa, para a pessoa certa — sem desperdiçar um centavo.</p>
-  <p>Não é achismo. Não é "boost de post". É o comportamento real do seu cliente transformado em venda.</p>
-</div>
-
-<div class="stat-digital reveal">
-  <div class="sd-card">
-    <div class="sd-num">⏰</div>
-    <div class="sd-text">
-      <strong>Descobrimos o horário exato em que seu cliente pesquisa seu produto</strong>
-      Seu anúncio aparece só quando ele está pronto para comprar. Sem desperdício de verba fora do horário certo.
-    </div>
-  </div>
-  <div class="sd-card">
-    <div class="sd-num">🖱️</div>
-    <div class="sd-text">
-      <strong>Rastreamos cada clique dentro do seu site</strong>
-      Sabemos o que ele leu, onde parou, o que quase o convenceu e por que ele saiu sem comprar. E usamos isso para melhorar.
-    </div>
-  </div>
-  <div class="sd-card">
-    <div class="sd-num">🛒</div>
-    <div class="sd-text">
-      <strong>Entendemos quando e por que ele comprou</strong>
-      Quando uma venda acontece, registramos o caminho que ele percorreu. Depois repetimos isso em escala.
-    </div>
-  </div>
-</div>
-
-<!-- O QUE ENTREGAMOS -->
-<div class="sec-label reveal">O que entregamos pro seu negócio</div>
-
-<div class="resultado reveal">
-  <h2>VOCÊ NÃO PRECISA<br/>ENTENDER DE <em>MARKETING.</em></h2>
-  <p>Você precisa entender do seu negócio. A gente cuida do resto.<br/>
-  Enquanto você atende seus clientes, a gente observa quem ainda não é seu cliente — e vai buscar ele pra você com dados reais.</p>
-</div>
-
-<div class="services reveal">
-  <div class="svc">
-    <div class="svc-num">01</div>
-    <div class="svc-body">
-      <strong>Instalamos o rastreio completo do seu negócio</strong>
-      <span>Google Analytics + Pixel do Facebook configurados do jeito certo. A partir daí, cada visita, cada clique e cada compra gera dados que a gente usa para melhorar seus resultados.</span>
-    </div>
-  </div>
-  <div class="svc">
-    <div class="svc-num">02</div>
-    <div class="svc-body">
-      <strong>Descobrimos o horário do seu cliente</strong>
-      <span>Analisamos quando seu público pesquisa o que você vende e colocamos seu anúncio exatamente nesse momento. Sem aparecer à toa fora do horário de interesse.</span>
-    </div>
-  </div>
-  <div class="svc">
-    <div class="svc-num">03</div>
-    <div class="svc-body">
-      <strong>Rastreamos o que ele faz dentro do seu site</strong>
-      <span>Sabemos em qual página ele ficou mais tempo, onde clicou, onde desistiu e o que fez ele voltar. Essas informações valem mais do que qualquer suposição.</span>
-    </div>
-  </div>
-  <div class="svc">
-    <div class="svc-num">04</div>
-    <div class="svc-body">
-      <strong>Entendemos por que ele comprou — e repetimos isso</strong>
-      <span>Quando uma conversão acontece, o Pixel registra o caminho. A gente analisa, encontra o padrão e usa o algoritmo do Facebook e do Google para encontrar mais pessoas iguais a quem já comprou.</span>
-    </div>
-  </div>
-  <div class="svc">
-    <div class="svc-num">05</div>
-    <div class="svc-body">
-      <strong>Você acompanha tudo sem precisar entender de tecnologia</strong>
-      <span>Relatório simples toda semana: quanto entrou, quanto saiu, quantos clientes vieram e de onde. Transparência total, sem enrolação.</span>
-    </div>
-  </div>
-</div>
-
-<!-- QUIZ -->
-<div class="sec-label reveal">Diagnóstico gratuito</div>
-
-<div class="reveal">
-  <div class="quiz-header">
-    <h2>VOCÊ ESTÁ AQUI.<br/><em>ISSO NÃO FOI POR ACASO.</em></h2>
-    <p>
-      Sem nenhum post. Sem nenhuma publicação. Mesmo assim você chegou até essa página.<br/>
-      <strong>Agora imagine o que eu posso fazer quando o produto a ser divulgado é o seu negócio.</strong><br/><br/>
-      Responda 3 perguntas rápidas. Assim que você terminar, eu já vou estar vendo suas respostas no Analytics — e entro em contato com uma estratégia feita para o seu caso.
-    </p>
-  </div>
-
-  <div class="dots">
-    <div class="dot active" id="dot0"></div>
-    <div class="dot" id="dot1"></div>
-    <div class="dot" id="dot2"></div>
-    <div class="dot" id="dot3"></div>
-  </div>
-
-  <!-- PASSO 0 — Q1 -->
-  <div class="block visible" id="b0">
-    <div class="card">
-      <div class="q-step">Pergunta 1 de 3</div>
-      <h2>Seu negócio já aparece quando seu cliente pesquisa no Google?</h2>
-      <div class="opts">
-        <button class="opt" onclick="responder(0,'Aparece, mas poderia estar melhor posicionado',this)">
-          <span class="opt-ic">📈</span> Aparece, mas poderia estar melhor posicionado
-        </button>
-        <button class="opt" onclick="responder(0,'Aparece, mas não sei se está trazendo clientes de verdade',this)">
-          <span class="opt-ic">🤷</span> Aparece, mas não sei se está trazendo clientes de verdade
-        </button>
-        <button class="opt" onclick="responder(0,'Não aparece ainda — quero começar do zero',this)">
-          <span class="opt-ic">🚀</span> Não aparece ainda — quero começar do zero
-        </button>
-        <button class="opt" onclick="responder(0,'Só tenho WhatsApp e redes sociais',this)">
-          <span class="opt-ic">📱</span> Só tenho WhatsApp e redes sociais
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- PASSO 1 — Q2 -->
-  <div class="block" id="b1">
-    <div class="card">
-      <div class="q-step">Pergunta 2 de 3</div>
-      <h2>Qual é o seu maior problema hoje?</h2>
-      <div class="opts">
-        <button class="opt" onclick="responder(1,'Meu cliente me busca mas não me encontra',this)">
-          <span class="opt-ic">🔍</span> Meu cliente me busca mas não me encontra
-        </button>
-        <button class="opt" onclick="responder(1,'Gasto com anúncio mas não consigo medir o resultado',this)">
-          <span class="opt-ic">💸</span> Gasto com anúncio mas não consigo medir o resultado
-        </button>
-        <button class="opt" onclick="responder(1,'Minha concorrência aparece na frente de mim',this)">
-          <span class="opt-ic">⚔️</span> Minha concorrência aparece na frente de mim
-        </button>
-        <button class="opt" onclick="responder(1,'Não sei nem por onde começar',this)">
-          <span class="opt-ic">🤔</span> Não sei nem por onde começar
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- PASSO 2 — Q3 -->
-  <div class="block" id="b2">
-    <div class="card">
-      <div class="q-step">Pergunta 3 de 3</div>
-      <h2>Qual é o faturamento mensal do seu negócio hoje?</h2>
-      <div class="opts">
-        <button class="opt" onclick="responder(2,'Até R$ 5.000',this)">
-          <span class="opt-ic">💰</span> Até R$ 5.000
-        </button>
-        <button class="opt" onclick="responder(2,'Entre R$ 5.000 e R$ 20.000',this)">
-          <span class="opt-ic">💸</span> Entre R$ 5.000 e R$ 20.000
-        </button>
-        <button class="opt" onclick="responder(2,'Entre R$ 20.000 e R$ 50.000',this)">
-          <span class="opt-ic">🤑</span> Entre R$ 20.000 e R$ 50.000
-        </button>
-        <button class="opt" onclick="responder(2,'Acima de R$ 50.000',this)">
-          <span class="opt-ic">🚀</span> Acima de R$ 50.000
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- PASSO 3 — DADOS -->
-  <div class="block" id="b3">
-    <div class="card">
-      <div class="q-step">✦ Última etapa</div>
-      <h2>Para onde eu mando sua análise?</h2>
-      <div class="field-group">
-        <div>
-          <div class="field-label">Seu nome</div>
-          <input class="inp" type="text" id="nome" placeholder="Como prefere ser chamado?" maxlength="60"/>
-        </div>
-        <div>
-          <div class="field-label">WhatsApp</div>
-          <input class="inp" type="tel" id="telefone" placeholder="(11) 99999-9999" maxlength="20"/>
-        </div>
-        <div>
-          <div class="field-label">E-mail</div>
-          <input class="inp" type="email" id="email" placeholder="seu@email.com"/>
-        </div>
-      </div>
-      <button class="btn-next" onclick="confirmarDados()">QUERO MINHA ANÁLISE GRATUITA →</button>
-    </div>
-  </div>
-
-  <!-- TELA DE AGRADECIMENTO — Pixel Lead dispara aqui -->
-  <div class="block" id="bfinal">
-    <div class="oferta">
-      <div class="oferta-tag">✦ DIAGNÓSTICO RECEBIDO</div>
-      <h2 id="msg-nome">RECEBI SUAS<br/><em>RESPOSTAS!</em></h2>
-      <p>
-        Suas respostas já estão aqui comigo no Analytics.<br/>
-        Agora eu sei exatamente qual é o seu cenário — e já estou montando uma estratégia para o seu negócio.<br/><br/>
-        <strong>Clique abaixo e a gente conversa agora pelo WhatsApp.</strong>
-      </p>
-      <div class="feat-list">
-        <div class="feat">Análise do comportamento digital do seu público hoje</div>
-        <div class="feat">Estratégia de rastreio e Pixel personalizada para o seu segmento</div>
-        <div class="feat">Estimativa de clientes que você pode atrair por mês com dados reais</div>
-        <div class="feat">Apresentação do que precisa ser feito no seu caso específico</div>
-        <div class="feat">Sem custo e sem compromisso de contratação</div>
-      </div>
-      <a class="wpp-btn" id="wpp-oferta" href="https://wa.me/5511978910701" target="_blank">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.858L.057 23.215a.75.75 0 00.916.916l5.357-1.476A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.952 0-3.785-.538-5.348-1.472l-.383-.228-3.18.875.875-3.18-.228-.383A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
-        </svg>
-        FALAR COM UM ESPECIALISTA AGORA
-      </a>
-      <p class="wpp-obs">⏱ Respondemos em até 2 horas em horário comercial</p>
-      <div class="selos">
-        <div class="selo"><em>🔒</em> Dados protegidos</div>
-        <div class="selo"><em>✅</em> Sem compromisso</div>
-        <div class="selo"><em>⚡</em> Análise em 24h</div>
-      </div>
-    </div>
-  </div>
-
-</div><!-- /reveal quiz -->
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-brand">CLICK NO ALVO</div>
-  <div class="footer-tag">Tráfego Pago com Precisão · São Paulo · © 2025</div>
-</footer>
-
-</div><!-- /wrap -->
-
-<!-- FORMSPREE -->
-<form id="form-lead" action="https://formspree.io/f/mvzwqjgn" method="POST" style="display:none">
-  <input type="hidden" name="Nome"        id="f-nome"/>
-  <input type="hidden" name="WhatsApp"    id="f-telefone"/>
-  <input type="hidden" name="Email"       id="f-email"/>
-  <input type="hidden" name="Pergunta1"   id="f-q1"/>
-  <input type="hidden" name="Pergunta2"   id="f-q2"/>
-  <input type="hidden" name="Pergunta3"   id="f-q3"/>
-  <input type="hidden" name="_subject"    value="🎯 Novo diagnóstico – Click no Alvo"/>
-</form>
-
 <script>
 var dados = { nome:'', telefone:'', email:'', q1:'', q2:'', q3:'' };
 
+// GA helper
+function track(evento, opcao) {
+  gtag('event', evento, { opcao_escolhida: opcao });
+}
+
 function responder(passo, opcao, btn) {
-  // Marca opção selecionada visualmente
   btn.parentElement.querySelectorAll('.opt').forEach(function(b){ b.classList.remove('selected'); });
   btn.classList.add('selected');
 
-  // Salva resposta
   if(passo === 0) dados.q1 = opcao;
   if(passo === 1) dados.q2 = opcao;
   if(passo === 2) dados.q3 = opcao;
 
-  // GA: rastreia qual pergunta e qual opção foi escolhida
   track('quiz_pergunta_' + (passo + 1), opcao);
 
   setTimeout(function(){ avancar(passo); }, 550);
@@ -661,8 +44,14 @@ function confirmarDados() {
   dados.telefone = telefone;
   dados.email    = email;
 
-  // GA: rastreia que o usuário preencheu os dados
-  track('quiz_dados_preenchidos', nome);
+  // GA (sem dados pessoais)
+  track('quiz_dados_preenchidos', 'ok');
+
+  // META — Advanced Matching
+  fbq('init', '1644837116658924', {
+    em: dados.email,
+    ph: dados.telefone
+  });
 
   avancar(3);
 }
@@ -676,11 +65,11 @@ function avancar(passo) {
     document.getElementById('b' + prox).classList.add('visible');
     document.getElementById('dot' + prox).classList.add('active');
 
-    // GA: rastreia visualização de cada etapa
     track('quiz_etapa_visualizada', 'etapa_' + (prox + 1));
 
   } else {
-    // Envia para Formspree via fetch
+
+    // Envio do lead
     fetch('https://formspree.io/f/mvzwqjgn', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -695,19 +84,19 @@ function avancar(passo) {
       })
     });
 
-    // GA: rastreia conclusão do diagnóstico
-    track('quiz_diagnostico_concluido', dados.nome);
+    // GA — conversão padrão
+    gtag('event', 'generate_lead', {
+      method: 'quiz'
+    });
 
-    // ════════════════════════════════════════════
-    // META PIXEL — Lead dispara SOMENTE AQUI
-    // Ou seja: só quando o usuário chegou até
-    // a tela de agradecimento e preencheu tudo.
-    // O Facebook vai otimizar para pessoas que
-    // fazem exatamente isso.
-    // ════════════════════════════════════════════
-    fbq('track', 'Lead');
+    // META — Lead otimizado
+    fbq('track', 'Lead', {
+      content_name: 'Diagnostico Quiz',
+      value: 1,
+      currency: 'BRL'
+    });
 
-    // Personaliza a tela de agradecimento
+    // Personalização
     document.getElementById('msg-nome').innerHTML =
       'PRONTO, <em>' + dados.nome.toUpperCase() + '!</em>';
 
@@ -715,6 +104,7 @@ function avancar(passo) {
       'Olá! Sou ' + dados.nome +
       ' e acabei de preencher o diagnóstico da Click no Alvo. Quero receber minha análise!'
     );
+
     document.getElementById('wpp-oferta').href =
       'https://wa.me/5511978910701?text=' + msg;
 
@@ -722,7 +112,7 @@ function avancar(passo) {
   }
 }
 
-// Scroll reveal
+// Scroll reveal (mantido)
 (function(){
   var els = document.querySelectorAll('.reveal');
   if(!els.length) return;
@@ -734,5 +124,3 @@ function avancar(passo) {
   els.forEach(function(el){ io.observe(el); });
 })();
 </script>
-</body>
-</html>
