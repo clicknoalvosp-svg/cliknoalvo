@@ -725,6 +725,7 @@ function avancar(passo) {
       'https://wa.me/5511978910701?text=' + msg;
 
     document.getElementById('bfinal').classList.add('visible');
+    window.location.href = 'obrigado.html?nome=' + encodeURIComponent(dados.nome);
   }
 }
 
