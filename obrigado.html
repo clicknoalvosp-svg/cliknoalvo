@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<!-- Google tag -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9PZTCJHJBR"></script>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NYEQVZCV1Q"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-9PZTCJHJBR');
+  gtag('config', 'G-NYEQVZCV1Q');
+  
+  // Rastreia conversão no GA4
+  window.addEventListener('load', function() {
+    gtag('event', 'lead_conversion', {
+      'event_category': 'form_submission',
+      'event_label': 'diagnostico_completo',
+      'value': 1,
+      'currency': 'BRL'
+    });
+    console.log('✅ Conversão rastreada no GA4');
+  });
+</script>
+
+<!-- Google tag para Google Ads (se tiver CID) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  
+  // Se tiver Google Ads, descomente e preencha:
+  // gtag('config', 'AW-XXXXXXXXXX');
+  // gtag('event', 'conversion', {
+  //   'send_to': 'AW-XXXXXXXXXX/AbCdEfGhIjKlMnOpQrStUv',
+  //   'value': 1.0,
+  //   'currency': 'BRL'
+  // });
 </script>
 
 <!-- Meta Pixel -->
@@ -21,29 +48,20 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1332046958945011');
 fbq('track','PageView');
 
-/* Conversão ajustada: dispara após carregamento completo */
 window.addEventListener('load', function() {
-  fbq('track', 'Lead', {
-    content_name: 'Relatorio Preenchido',
-    content_category: 'Diagnostico',
+  fbq('track', 'Purchase', {
     value: 1.00,
-    currency: 'BRL'
+    currency: 'BRL',
+    content_name: 'Diagnostico Completo',
+    content_category: 'Lead'
   });
+  console.log('✅ Conversão rastreada no Meta Pixel');
 });
-</script>
-
-<!-- GA4 Lead -->
-<script>
-  window.addEventListener('load', function(){
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'generate_lead', { event_category: 'obrigado' });
-    }
-  });
 </script>
 
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>Obrigado | Clik no Alvo</title>
+<title>Obrigado | Click no Alvo</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
@@ -52,20 +70,27 @@ window.addEventListener('load', function() {
   html, body {
     height: 100%; overflow: hidden;
     font-family: 'Inter', sans-serif;
-    background: #fff; color: #1a1a2e;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #ffffff;
     -webkit-font-smoothing: antialiased;
   }
 
   .progress-full {
     position: fixed; top: 0; left: 0; right: 0;
-    height: 4px; background: #ff4d00;
+    height: 4px; background: linear-gradient(90deg, #3dd65c 0%, #25d366 100%);
+    animation: slideIn 1.2s ease-out;
+  }
+
+  @keyframes slideIn {
+    from { width: 0; }
+    to { width: 100%; }
   }
 
   .logo-top {
     position: fixed; top: 16px; left: 20px;
-    font-size: 0.82rem; font-weight: 700;
-    letter-spacing: 1.5px; color: #ff4d00;
-    z-index: 50; opacity: 0.8; text-transform: uppercase;
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 2px; color: #3dd65c;
+    z-index: 50; opacity: 0.9; text-transform: uppercase;
   }
 
   .page {
@@ -73,30 +98,39 @@ window.addEventListener('load', function() {
     display: flex; flex-direction: column;
     justify-content: center; align-items: flex-start;
     padding: 56px 40px 72px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   }
 
   .icon {
-    font-size: 3.2rem;
+    font-size: 3.6rem;
     margin-bottom: 24px;
-    animation: popIn .5s cubic-bezier(.34,1.56,.64,1) both;
+    animation: popIn .6s cubic-bezier(.34,1.56,.64,1) both;
+    filter: drop-shadow(0 4px 12px rgba(61, 214, 92, 0.3));
   }
 
   @keyframes popIn {
-    from { transform: scale(0); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
+    from { transform: scale(0) rotate(-20deg); opacity: 0; }
+    to   { transform: scale(1) rotate(0deg); opacity: 1; }
   }
 
   .title {
-    font-size: clamp(1.4rem, 5vw, 2rem);
-    font-weight: 700; line-height: 1.3;
-    color: #1a1a2e; max-width: 400px;
-    margin-bottom: 12px;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    font-weight: 700; line-height: 1.2;
+    color: #ffffff; max-width: 420px;
+    margin-bottom: 16px;
     animation: fadeUp .5s .15s ease both;
   }
 
+  .title strong {
+    background: linear-gradient(135deg, #3dd65c 0%, #25d366 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .sub {
-    font-size: 0.9rem; color: #888;
-    line-height: 1.6; max-width: 340px;
+    font-size: 0.95rem; color: #b0b0b0;
+    line-height: 1.7; max-width: 380px;
     margin-bottom: 32px;
     animation: fadeUp .5s .25s ease both;
   }
@@ -107,20 +141,74 @@ window.addEventListener('load', function() {
   }
 
   .btn-whats {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: #25D366; color: #fff;
+    display: inline-flex; align-items: center; gap: 12px;
+    background: linear-gradient(135deg, #25d366 0%, #20ba58 100%);
+    color: #ffffff;
     font-family: 'Inter', sans-serif; font-size: 1rem;
-    font-weight: 600; border: none; padding: 14px 28px;
-    border-radius: 8px; cursor: pointer; text-decoration: none;
-    transition: background .2s;
+    font-weight: 600; border: none; padding: 15px 32px;
+    border-radius: 10px; cursor: pointer; text-decoration: none;
+    transition: all .3s cubic-bezier(.34,.7,.64,1);
     animation: fadeUp .5s .35s ease both;
     -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
   }
 
-  .btn-whats:hover { background: #1fb959; }
+  .btn-whats:hover {
+    background: linear-gradient(135deg, #20ba58 0%, #1a9548 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4);
+  }
+
+  .btn-whats:active {
+    transform: translateY(-1px);
+  }
+
+  .benefits {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(61, 214, 92, 0.2);
+    animation: fadeUp .5s .45s ease both;
+  }
+
+  .benefits-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #3dd65c;
+    margin-bottom: 16px;
+  }
+
+  .benefit-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 0.9rem; color: #d0d0d0;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .benefit-item::before {
+    content: '✓';
+    color: #3dd65c;
+    font-weight: 700;
+    min-width: 24px;
+    margin-top: 2px;
+  }
+
+  .timer {
+    margin-top: 24px;
+    padding: 12px;
+    background: rgba(61, 214, 92, 0.1);
+    border-left: 3px solid #3dd65c;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #b0b0b0;
+  }
 
   @media (max-width: 480px) {
     .page { padding: 52px 24px 68px; }
+    .title { font-size: 1.4rem; }
+    .btn-whats { width: 100%; justify-content: center; }
+    .benefits { margin-top: 36px; }
   }
 </style>
 </head>
@@ -128,29 +216,53 @@ window.addEventListener('load', function() {
 <body>
 
 <div class="progress-full"></div>
-<div class="logo-top">CLIK NO ALVO</div>
+<div class="logo-top">CLICK NO ALVO</div>
 
 <div class="page">
-  <div class="icon">✈️</div>
-  <div class="title">Obrigado pelas informações, em alguns minutos você receberá um contato da nossa equipe</div>
-  <div class="sub">Será um prazer te ajudar a levar a sua empresa para o próximo nível.</div>
+  <div class="icon">🎉</div>
+  <div class="title"><strong>Perfeito!</strong> Sua análise foi recebida</div>
+  <div class="sub">
+    Estamos preparando um diagnóstico personalizado do seu negócio. Em breve, um especialista da Click no Alvo entrará em contato.
+  </div>
 
   <a class="btn-whats" id="btnWhats" href="https://wa.me/5511978910701" target="_blank">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
-    Enviar Whats
+    Conversar com Especialista
   </a>
+
+  <div class="benefits">
+    <div class="benefits-title">O que você vai receber:</div>
+    <div class="benefit-item">Análise completa da sua presença digital</div>
+    <div class="benefit-item">Estratégia personalizada para seu segmento</div>
+    <div class="benefit-item">Estimativa de clientes por mês</div>
+    <div class="benefit-item">Sem custo e sem compromisso</div>
+  </div>
+
+  <div class="timer">
+    ⏱ Respondemos em até 2 horas em horário comercial
+  </div>
 </div>
 
 <script>
+  // Extrai o nome da URL se houver
   var params = new URLSearchParams(window.location.search);
-  var nome   = params.get('nome') || '';
-  var msg    = encodeURIComponent(
+  var nome = params.get('nome') || 'visitante';
+  
+  // Customiza mensagem do WhatsApp
+  var msg = encodeURIComponent(
     '👋 Olá! Meu nome é ' + nome + '.\n' +
-    'Acabei de preencher o formulário da Clik no Alvo e gostaria de saber mais sobre os serviços.'
+    'Acabei de preencher o formulário de diagnóstico da Click no Alvo e gostaria de saber mais sobre os serviços.'
   );
   document.getElementById('btnWhats').href = 'https://wa.me/5511978910701?text=' + msg;
+
+  // Log de debug
+  console.log('📊 Página de Agradecimento Carregada');
+  console.log('👤 Nome do cliente:', nome);
+  console.log('📱 WhatsApp link:', document.getElementById('btnWhats').href);
+  console.log('✅ GA4 ID: G-NYEQVZCV1Q');
+  console.log('✅ Meta Pixel ID: 1332046958945011');
 </script>
 
 </body>
