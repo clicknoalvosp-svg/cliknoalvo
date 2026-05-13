@@ -21,20 +21,23 @@
   });
 </script>
 
-<!-- Google tag para Google Ads (se tiver CID) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
+<!-- Google Ads (Google Tag Manager) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16739383303"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+  gtag('config', 'AW-16739383303');
   
-  // Se tiver Google Ads, descomente e preencha:
-  // gtag('config', 'AW-XXXXXXXXXX');
-  // gtag('event', 'conversion', {
-  //   'send_to': 'AW-XXXXXXXXXX/AbCdEfGhIjKlMnOpQrStUv',
-  //   'value': 1.0,
-  //   'currency': 'BRL'
-  // });
+  // Event snippet for Enviar formulário de lead conversion page
+  window.addEventListener('load', function() {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-16739383303/pjX3CMKolawcEIfw-q0-',
+      'value': 1.0,
+      'currency': 'BRL'
+    });
+    console.log('✅ Conversão Google Ads rastreada');
+  });
 </script>
 
 <!-- Meta Pixel -->
@@ -262,6 +265,7 @@ window.addEventListener('load', function() {
   console.log('👤 Nome do cliente:', nome);
   console.log('📱 WhatsApp link:', document.getElementById('btnWhats').href);
   console.log('✅ GA4 ID: G-NYEQVZCV1Q');
+  console.log('✅ Google Ads ID: AW-16739383303');
   console.log('✅ Meta Pixel ID: 1332046958945011');
 </script>
 
